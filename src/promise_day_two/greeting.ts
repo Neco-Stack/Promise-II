@@ -1,11 +1,10 @@
-function sayHello(name: string, callback:(message: string) => void): void {
+function sayHello(name: string, callback: (message:string) => void) {
     const greeting = `Hallo, ${name}!`;
-    callback(greeting)
-};
-function greetingCallback(message: string): void {
+    callback(greeting);    
+}
+function greetingCallback(message: string){
     console.log(message);
 }
 sayHello("necati", greetingCallback);
-sayHello("ugur", greetingCallback);
-sayHello("Johnnx", greetingCallback);
-
+sayHello("Mario", greetingCallback);
+sayHello("Samantha", greetingCallback);
