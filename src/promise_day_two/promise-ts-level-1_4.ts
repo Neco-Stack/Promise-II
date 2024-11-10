@@ -18,34 +18,49 @@ const exercise3 = new Promise<string>((resolve, reject) => {
 })
 const statusElement = document.getElementById('status');
 
-exercise1
-    .then(result => {
-        if (statusElement) {
-            const newLine = document.createElement('br');
-            const textNode = document.createTextNode(result);
-            statusElement.appendChild(newLine);
-            statusElement.appendChild(textNode)
-        }
-    })
-    .catch(error => console.error("Exercise 1 failed", error))
+// exercise1
+//     .then(result => {
+//         if (statusElement) {
+//             statusElement.innerHTML += `
+//             <br>
+//             ${result}
+//             `
+//         }
+//     })
+//     .catch(error => console.error("Exercise 1 failed", error))
     
-exercise2
-    .then(result => {
-        if (statusElement) {
-            const newLine = document.createElement('br');
-            const textNode = document.createTextNode(result);
-            statusElement.appendChild(newLine);
-            statusElement.appendChild(textNode)
-        }
-    })
-    .catch(error => console.error("Exercise 1 failed", error))
-exercise3
-    .then(result => {
-        if (statusElement) {
-            const newLine = document.createElement('br');
-            const textNode = document.createTextNode(result);
-            statusElement.appendChild(newLine);
-            statusElement.appendChild(textNode)
-        }
-    })
-    .catch(error => console.error("Exercise 3 has failed", error))
+// exercise2
+//     .then(result => {
+//         if (statusElement) {
+//             statusElement.innerHTML += `
+//             <br>
+//             ${result}
+//             `
+//         }
+//     })
+//     .catch(error => console.error("Exercise 1 failed", error))
+// exercise3
+//     .then(result => {
+//         if (statusElement) {
+//             statusElement.innerHTML += `
+//             <br>
+//             ${result}`
+//         }
+//     })
+//     .catch(error => console.error("Exercise 3 has failed", error))
+Promise.all([exercise1,exercise2,exercise3])
+.then(results => {
+    if (statusElement) {
+        results.forEach(result => {
+            statusElement.innerHTML += `
+            <br>
+            ${result}
+            `;
+        })
+        statusElement.innerHTML += `
+        <br>
+        Homework done
+        `;
+    }
+})
+.catch(error => console.error("One of the exercises has failed", error));
